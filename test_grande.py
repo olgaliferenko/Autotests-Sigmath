@@ -18,6 +18,7 @@ def run(playwright: Playwright) -> None:
     page1 = context.new_page()
     page1.goto("https://sigmath-stage.fly.dev/sessions/sess_02vjayEow5Iz22wIKXGJ6M")
     page1.get_by_role("button", name="Join live session").click()
+    page1.wait_for_timeout(1000)
     page1.locator("#local-member-component path").first.click()
     expect(page1.locator("#local-member-component").get_by_role("img").first).to_be_visible()
     page1.locator("#local-member-component").get_by_role("img").nth(1).click()
