@@ -6,74 +6,16 @@ def run(playwright: Playwright) -> None:
     context = browser.new_context()
 
     #user 1
-    page = context.new_page()
-    page.goto("https://sigmath-stage.fly.dev/sessions/sess_02vjayEow5Iz22wIKXGJ6M")
-    page.get_by_label("Name").click()
-    page.get_by_label("Name").fill("user 1")
-    page.get_by_role("button", name="Submit").click()
+    list_of_numbers = range(1,200,1)
 
-    #user 2
-    page2 = context.new_page()
-    page2.goto("https://sigmath-stage.fly.dev/sessions/sess_02vjayEow5Iz22wIKXGJ6M")
-    page2.get_by_label("Name").click()
-    page2.get_by_label("Name").fill("user 2")
-    page2.get_by_role("button", name="Submit").click() 
+    for index in list_of_numbers:
+        username = f'user {index}'
+        page = context.new_page()
+        page.goto("https://sigmath-stage.fly.dev/sessions/sess_02vjayEow5Iz22wIKXGJ6M")
+        page.get_by_label("Name").click()
+        page.get_by_label("Name").fill(username)
+        page.get_by_role("button", name="Submit").click()
 
-    #user 3
-    page3 = context.new_page()
-    page3.goto("https://sigmath-stage.fly.dev/sessions/sess_02vjayEow5Iz22wIKXGJ6M")
-    page3.get_by_label("Name").click()
-    page3.get_by_label("Name").fill("user 3")
-    page3.get_by_role("button", name="Submit").click()
-
-    #user 4
-    page4 = context.new_page()
-    page4.goto("https://sigmath-stage.fly.dev/sessions/sess_02vjayEow5Iz22wIKXGJ6M")
-    page4.get_by_label("Name").click()
-    page4.get_by_label("Name").fill("user 4")
-    page4.get_by_role("button", name="Submit").click()
-
-    #user 5
-    page5 = context.new_page()
-    page5.goto("https://sigmath-stage.fly.dev/sessions/sess_02vjayEow5Iz22wIKXGJ6M")
-    page5.get_by_label("Name").click()
-    page5.get_by_label("Name").fill("user 5")
-    page5.get_by_role("button", name="Submit").click()
-
-    #user 6
-    page6 = context.new_page()
-    page6.goto("https://sigmath-stage.fly.dev/sessions/sess_02vjayEow5Iz22wIKXGJ6M")
-    page6.get_by_label("Name").click()
-    page6.get_by_label("Name").fill("user 6")
-    page6.get_by_role("button", name="Submit").click()
-
-    #user 7
-    page7 = context.new_page()
-    page7.goto("https://sigmath-stage.fly.dev/sessions/sess_02vjayEow5Iz22wIKXGJ6M")
-    page7.get_by_label("Name").click()
-    page7.get_by_label("Name").fill("user 7")
-    page7.get_by_role("button", name="Submit").click()
-
-    #user 8
-    page8 = context.new_page()
-    page8.goto("https://sigmath-stage.fly.dev/sessions/sess_02vjayEow5Iz22wIKXGJ6M")
-    page8.get_by_label("Name").click()
-    page8.get_by_label("Name").fill("user 8")
-    page8.get_by_role("button", name="Submit").click()
-
-    #user 9
-    page9 = context.new_page()
-    page9.goto("https://sigmath-stage.fly.dev/sessions/sess_02vjayEow5Iz22wIKXGJ6M")
-    page9.get_by_label("Name").click()
-    page9.get_by_label("Name").fill("user 9")
-    page9.get_by_role("button", name="Submit").click()
-
-    #user 10
-    page10 = context.new_page()
-    page10.goto("https://sigmath-stage.fly.dev/sessions/sess_02vjayEow5Iz22wIKXGJ6M")
-    page10.get_by_label("Name").click()
-    page10.get_by_label("Name").fill("user 10")
-    page10.get_by_role("button", name="Submit").click()
     # ---------------------
     
     context.close()
