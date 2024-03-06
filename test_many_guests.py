@@ -6,7 +6,7 @@ def run(playwright: Playwright) -> None:
     context = browser.new_context()
 
     #user 1
-    list_of_numbers = range(1,200,1)
+    list_of_numbers = range(1, 20, 1)
 
     for index in list_of_numbers:
         username = f'user {index}'
