@@ -1,12 +1,19 @@
+import time
 from playwright.sync_api import Playwright, sync_playwright, expect
 
+#TODO : 
+#  -posledti user ne uhodit from session
+# - vikidivaet from session teh, kto bil tam (na usere 10 iz 11)
+# - posle 10 userA ne pokasivaet ih na stranice session
+# - na usere 2 i 4 otkluchilsa screenshare
+# - 
 
 def run(playwright: Playwright) -> None:
     browser = playwright.chromium.launch(headless=False)
     context = browser.new_context()
 
     #user 1
-    list_of_numbers = range(1, 20, 1)
+    list_of_numbers = range(1, 4, 1)
 
     for index in list_of_numbers:
         username = f'user {index}'
@@ -17,7 +24,7 @@ def run(playwright: Playwright) -> None:
         page.get_by_role("button", name="Submit").click()
 
     # ---------------------
-    
+    time.sleep(5)
     context.close()
     browser.close()
 
