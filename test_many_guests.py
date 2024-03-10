@@ -6,7 +6,9 @@ from playwright.sync_api import Playwright, sync_playwright, expect
 # - vikidivaet from session teh, kto bil tam (na usere 10 iz 11)
 # - posle 10 userA ne pokasivaet ih na stranice session
 # - na usere 2 i 4 otkluchilsa screenshare
-# - 
+# - proverit na rasnoi shirine ekrana
+# - proverit https://sigmath.org/users/log_in
+# - proverit https://sigmath.org/users/register
 
 def run(playwright: Playwright) -> None:
     browser = playwright.chromium.launch(headless=False)
