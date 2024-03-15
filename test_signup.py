@@ -24,6 +24,7 @@ def run(playwright: Playwright) -> None:
     page.get_by_label("Password").fill("123456789")
     page.get_by_role("button", name="Create an account").click()
     expect(page.get_by_text("There is an onboarding")).to_be_visible()
+    page.screenshot(path= f"screenshot_{email}.png")
     expect(page.get_by_role("link", name="Your profile")).to_be_visible()
 
     # ---------------------
