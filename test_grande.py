@@ -25,6 +25,7 @@ def run(playwright: Playwright) -> None:
     expect(page1.locator("#local-member-component path").nth(1)).to_be_visible()
     page1.locator("#local-member-component path").nth(1).click()
     expect(page1.locator("#local-member-component").get_by_role("img").nth(1)).to_be_visible()
+    #ne zabud rozdat prava na ekran
     expect(page1.locator("#local-member-component").get_by_role("img").nth(2)).to_be_visible()
     page1.locator("#local-member-component").get_by_role("img").nth(2).click()
     expect(page1.locator("#local-member-component").get_by_role("img").nth(2)).to_be_visible()
