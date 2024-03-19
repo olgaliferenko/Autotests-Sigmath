@@ -18,9 +18,6 @@ def run_signup(playwright: Playwright) -> None:
 
     page.get_by_label("Email").click()
 
-    #random_part = ''.join(choice(ascii_uppercase) for i in range(12))
-
-    #email = f'klara_{random_part}@test.com'
     print(email)
 
     page.get_by_label("Email").fill(email)
@@ -30,19 +27,20 @@ def run_signup(playwright: Playwright) -> None:
     expect(page.get_by_text("There is an onboarding")).to_be_visible()
     page.screenshot(path= f"screenshot_{email}.png")
     expect(page.get_by_role("link", name="Your profile")).to_be_visible()
-
-    #get_by_role("link", name="Log out")
-
+    expect(page.get_by_role("link", name="Log out")).to_be_visible()
 
     # ---------------------
     context.close()
     browser.close()
 
+#TODO:
+#1 poprobovat avtopizaciu cherez -> https://playwright.dev/python/docs/next/network#http-authentication 
+    
+
 def run_signin(playwright: Playwright) -> None:
     browser = playwright.chromium.launch(headless=False)
     context = browser.new_context()
     page = context.new_page()
-    #expect(page.get_by_role("link", name="Log out")).to_be_visible()
     
     page.goto("https://sigmath-stage.fly.dev/")
     page.get_by_role("link", name="Log in").click()

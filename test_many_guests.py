@@ -2,24 +2,26 @@ import time
 from playwright.sync_api import Playwright, sync_playwright, expect
 
 #TODO : 
-#  -posledti user ne uhodit from session
-# - vikidivaet from session teh, kto bil tam (na usere 10 iz 11)
+
+
 # - posle 10 userA ne pokasivaet ih na stranice session
 # - na usere 2 i 4 otkluchilsa screenshare
 # - proverit na rasnoi shirine ekrana
-# - proverit https://sigmath.org/users/log_in
-# - proverit https://sigmath.org/users/register
+
+# - for every guest set new country
 
 def run(playwright: Playwright) -> None:
     browser = playwright.chromium.launch(headless=False)
     context = browser.new_context()
 
     #user 1
-    list_of_numbers = range(1, 4, 1)
+    list_of_numbers = range(1, 13, 1)
 
     for index in list_of_numbers:
         username = f'user {index}'
         page = context.new_page()
+        page.on("request", lambda request: print(">>", request.method, request.url))
+        page.on("response", lambda response: print("<<", response.status, response.url))
         page.goto("https://sigmath-stage.fly.dev/sessions/sess_02vjayEow5Iz22wIKXGJ6M")
         page.get_by_label("Name").click()
         page.get_by_label("Name").fill(username)
@@ -29,6 +31,9 @@ def run(playwright: Playwright) -> None:
     time.sleep(5)
     context.close()
     browser.close()
+    # Browser proxy option is required for Chromium on Windows.
+# browser = chromium.launch(proxy={"server": "per-context"})
+# context = browser.new_context(proxy={"server": "http://myproxy.com:3128"})
 
 
 with sync_playwright() as playwright:
