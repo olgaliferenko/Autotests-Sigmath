@@ -1,18 +1,18 @@
 import time
 from playwright.sync_api import Playwright, sync_playwright, expect
 
-#TODO : 
-
-
-# - posle 10 userA ne pokasivaet ih na stranice session
-# - na usere 2 i 4 otkluchilsa screenshare
-# - proverit na rasnoi shirine ekrana
-
+#TODO :
 # - for every guest set new country
+# - check that RU sees notification
+
 
 def run(playwright: Playwright) -> None:
-    #browser = playwright.chromium.launch(proxy={"server": "http://myproxy.com"})
-    browser = playwright.firefox.launch(proxy={"server": "http://google.com"})
+    # find free proxy in Google and add it here
+    proxy_serbia = "217.26.67.57:3180"
+    proxy_ukraina = "31.43.158.108:8888"
+    proxy_ru = "82.146.45.136:3128"
+
+    browser = playwright.firefox.launch(proxy={"server": proxy_ru})
 
     context = browser.new_context()
 
