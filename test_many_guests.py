@@ -12,12 +12,18 @@ from playwright.sync_api import Playwright, sync_playwright, expect
 
 def run(playwright: Playwright) -> None:
     browser = playwright.chromium.launch(headless=False)
-
-    mobile_screen = {"width": 360, "height": 740}
-    desctop_screen = {"width": 1366, "height": 768}
-    desctop2_screen = {"width": 1920, "height": 1080}
-    screen_list = [mobile_screen, desctop_screen, mobile_screen, desctop2_screen, mobile_screen, desctop_screen,]
-    
+    screens={
+        "mobile": {"width": 360, "height": 740},
+        "desctop": {"M": {"width": 1366, "height": 768}, "L": {"width": 1920, "height": 1080}}
+    }
+    screen_list = [
+        screens["mobile"], 
+        screens["desctop"]["M"],
+        screens["desctop"]["L"],
+        screens["mobile"], 
+        screens["desctop"]["M"],
+        screens["desctop"]["L"]
+    ]
     #screen_list refactor
 
     context = browser.new_context()
