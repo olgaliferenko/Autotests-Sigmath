@@ -9,27 +9,32 @@ from playwright.sync_api import Playwright, sync_playwright, expect
 # - proverit na rasnoi shirine ekrana
 
 # - for every guest set new country
+# - add screenshot for every size
 
 def run(playwright: Playwright) -> None:
     browser = playwright.chromium.launch(headless=False)
     screens={
-        "mobile": {"width": 360, "height": 740},
-        "desctop": {"M": {"width": 1366, "height": 768}, "L": {"width": 1920, "height": 1080}}
+        "mobile": {
+            "M": {"width": 360, "height": 740}, 
+            "L": {"width": 2176, "height": 1812}
+        },
+        "desctop": {
+            "M": {"width": 1366, "height": 768}, 
+            "L": {"width": 1920, "height": 1080}
+        }
     }
     screen_list = [
-        screens["mobile"], 
+        screens["mobile"]["L"], 
         screens["desctop"]["M"],
         screens["desctop"]["L"],
-        screens["mobile"], 
-        screens["desctop"]["M"],
-        screens["desctop"]["L"]
+        screens["mobile"]["M"], 
     ]
     #screen_list refactor
 
     context = browser.new_context()
 
     #user 1
-    list_of_numbers = range(0, 4, 1)
+    list_of_numbers = range(0, 3, 1)
 
     for index in list_of_numbers:
         username = f'user {index}'
