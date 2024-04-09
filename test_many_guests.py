@@ -34,7 +34,7 @@ def run(playwright: Playwright) -> None:
     context = browser.new_context()
 
     #user 1
-    list_of_numbers = range(0, 3, 1)
+    list_of_numbers = range(0, 4, 1)
 
     for index in list_of_numbers:
         username = f'user {index}'
@@ -46,6 +46,8 @@ def run(playwright: Playwright) -> None:
         page.get_by_label("Name").click()
         page.get_by_label("Name").fill(username)
         page.get_by_role("button", name="Submit").click()
+        time.sleep(1)
+        page.screenshot(path= f'screenshot_{username}_{screen_list[index]["width"]}_x_{screen_list[index]["height"]}.png')
 
     # ---------------------
     time.sleep(5)
