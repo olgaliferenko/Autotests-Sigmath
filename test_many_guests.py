@@ -1,17 +1,15 @@
 import time
-from playwright.sync_api import Playwright, sync_playwright, expect
+from playwright.sync_api import Playwright, sync_playwright, expect, Page
 
-#TODO : 
-
-
+# TODO : 
 # - posle 10 userA ne pokasivaet ih na stranice session
 # - na usere 2 i 4 otkluchilsa screenshare
 # - proverit na rasnoi shirine ekrana
-
 # - for every guest set new country
 # - add screenshot for every size
 
-def run(playwright: Playwright) -> None:
+# def run(playwright: Playwright) -> None:
+def test_many_screensizes(playwright: Playwright) -> None:
     browser = playwright.chromium.launch(headless=False)
     screens={
         "mobile": {
@@ -54,6 +52,5 @@ def run(playwright: Playwright) -> None:
     context.close()
     browser.close()
    
-
-with sync_playwright() as playwright:
-    run(playwright)
+# with sync_playwright() as playwright:
+#     run(playwright)
