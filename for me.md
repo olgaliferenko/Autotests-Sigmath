@@ -7,3 +7,5 @@ PWDEBUG=1 pytest -s test_example.py = запуск теста пошагово
 pytest test_guest.py --browser chromium --browser firefox - запустить тест в разніх браузерах
 --device="iPhone 11 Pro" - запустить тест на мобилніх устройствах (айфон напр)
 page.screenshot(path= f"screenshot_{email}.png") - часть кода для изготовления скриншота
+
+https://pytest-docs-ru.readthedocs.io/ru/latest/usage.html годная документация
