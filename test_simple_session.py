@@ -1,11 +1,11 @@
 from playwright.sync_api import Playwright, sync_playwright, expect
 
 
-def run(playwright: Playwright) -> None:
-    browser = playwright.chromium.launch(headless=False)
+def test_run(playwright: Playwright) -> None:
+    browser = playwright.chromium.launch(headless=True)
     context = browser.new_context()
     page = context.new_page()
-    page.goto("https://sigmath-stage.fly.dev/sessions/sess_02vjayEow5Iz22wIKXGJ6M")
+    page.goto("https://sigmath.org/sessions/sess_02xFexFIl3VkAIH2GjWYFm")
     page.get_by_label("Name").click()
     page.get_by_label("Name").fill("Olga.test")
     page.get_by_role("button", name="Submit").click()
@@ -25,5 +25,5 @@ def run(playwright: Playwright) -> None:
     browser.close()
 
 
-with sync_playwright() as playwright:
-    run(playwright)
+# with sync_playwright() as playwright:
+#     run(playwright)
