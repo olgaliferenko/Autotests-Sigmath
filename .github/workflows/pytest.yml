@@ -30,6 +30,10 @@ jobs:
       run: |
         pytest test_oneplusone.py
 
+    - name: Test simple session
+      run:
+        pytest test_simple_session.py  
+
     # - name: Archive Pytest test report
     #   uses: actions/upload-artifact@v3
     #   with:
