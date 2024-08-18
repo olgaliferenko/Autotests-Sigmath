@@ -2,7 +2,7 @@ from playwright.sync_api import Playwright, sync_playwright, expect
 
 
 def test_run(playwright: Playwright) -> None:
-    browser = playwright.chromium.launch(headless=True)
+    browser = playwright.chromium.launch(headless=False)
     context = browser.new_context()
     page = context.new_page()
     page.goto("https://sigmath.org/sessions/sess_02xFexFIl3VkAIH2GjWYFm")
