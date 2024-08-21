@@ -32,7 +32,8 @@ jobs:
 
     - name: Test simple session
       run:
-        pytest test_simple_session.py  --tracing=retain-on-failure
+        pytest test_freshmart.py  --tracing=retain-on-failure
+        # pytest test_simple_session.py  --tracing=retain-on-failure
       # uses: actions/upload-artifact@v4
       #   if: ${{ !cancelled() }}
       #   with:
@@ -52,3 +53,22 @@ jobs:
     #   with:
     #     name: Pytest-test-report
     #     path: report
+
+    from playwright.sync_api import Playwright, sync_playwright, expect
+
+
+# def run(playwright: Playwright) -> None:
+#     browser = playwright.chromium.launch(headless=False)
+#     context = browser.new_context()
+#     page = context.new_page()
+#     page.goto("https://freshmart.com.ua/")
+#     page.get_by_role("link", name="Овочі Овочі").click()
+#     expect(page.get_by_role("link", name="Овочі Овочі")).to_be_visible()
+
+#     # ---------------------
+#     context.close()
+#     browser.close()
+
+
+# with sync_playwright() as playwright:
+#     run(playwright)
